@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description"
+    content="Igreja Batista Missionária em Lagoa Encantada — IBMLE. Cultos, ministérios, pedido de oração e programação semanal em Ibura, Recife — PE.">
+  <meta name="theme-color" content="#000000">
+  <meta name="robots" content="index, follow">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="IBMLE">
+
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ibmlesite-6xwavq.manus.space">
+  <meta property="og:title" content="IBMLE — Igreja Batista Missionária em Lagoa Encantada">
+  <meta property="og:description"
+    content="Venha nos visitar! Cultos, ministérios, programação semanal e pedidos de oração.">
+  <meta property="og:image" content="assets/img/hero-banner.png">
+
+  <title>IBMLE — Igreja Batista Missionária em Lagoa Encantada</title>
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+
+
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="assets/img/logo-imble.jpeg">
+
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Menu principal">
+    <div class="nav-brand">
+      <img src="assets/img/logo-imble.jpeg" alt="Logo IBMLE" class="nav-logo" loading="lazy">
+      <span class="nav-title">IBMLE</span>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
+      <span class="hamburger"></span>
+      <span class="hamburger"></span>
+      <span class="hamburger"></span>
+    </button>
+    <ul class="nav-links" id="navLinks" role="list">
+      <li><a href="#inicio" class="nav-link active" id="link-inicio">Início</a></li>
+      <li><a href="#historia" class="nav-link" id="link-historia">História</a></li>
+      <li><a href="#ministerios" class="nav-link" id="link-ministerios">Ministérios</a></li>
+      <li><a href="#programacao" class="nav-link" id="link-programacao">Cultos</a></li>
+      <li><a href="#louvor" class="nav-link" id="link-louvor">Louvor</a></li>
+      <li><a href="#adoracao" class="nav-link" id="link-adoracao">Adoração</a></li>
+      <li><a href="#ebd" class="nav-link" id="link-ebd">EBD</a></li>
+      <li><a href="#oracao" class="nav-link" id="link-oracao">Oração</a></li>
+      <li><a href="#contato" class="nav-link" id="link-contato">Contato</a></li>
+    </ul>
+
+
+    <div class="nav-actions">
+      <button id="btnTheme" class="btn-icon" aria-label="Alternar tema claro/escuro" title="Alternar tema">
+        <span class="icon-theme">🌙</span>
+      </button>
+      <button id="btnFontMinus" class="btn-icon" aria-label="Diminuir fonte" title="Diminuir fonte">A-</button>
+      <button id="btnFontPlus" class="btn-icon" aria-label="Aumentar fonte" title="Aumentar fonte">A+</button>
+    </div>
+  </nav>
+
+
+  <section id="inicio" class="hero" aria-label="Bem-vindo à IBMLE">
+    <div class="hero-bg">
+      <img src="assets/img/hero-banner.png" alt="" class="hero-img" aria-hidden="true" loading="eager">
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-content animate-fade-in">
+      <img src="assets/img/logo-imble.jpeg" alt="Logo da Igreja Batista Missionária em Lagoa Encantada"
+        class="hero-logo">
+      <h1 class="hero-title">Igreja Batista Missionária<br><span class="gold">em Lagoa Encantada</span></h1>
+      <p class="hero-subtitle">Lagoa Encantada — Ibura, Recife — PE</p>
+      <blockquote class="hero-verse">
+        <p>"Porque onde dois ou três estiverem reunidos em meu nome, aí estou eu no meio deles."</p>
+        <cite>— Mateus 18:20</cite>
+      </blockquote>
+      <div class="hero-ctas">
+        <a href="#oracao" class="btn btn-primary" id="cta-oracao">🙏 Pedido de Oração</a>
+        <a href="#programacao" class="btn btn-outline" id="cta-cultos">🗓 Ver Cultos</a>
+      </div>
+    </div>
+    <a href="#historia" class="hero-scroll" aria-label="Rolar para baixo">
+      <span class="scroll-arrow">↓</span>
+    </a>
+  </section>
+
+
+  <section id="historia" class="section" aria-labelledby="titulo-historia">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-badge">📖 Nossa História</span>
+        <h2 id="titulo-historia" class="section-title">Uma obra de <span class="gold">fé e amor</span></h2>
+        <button class="btn-audio" id="audio-historia" aria-label="Ouvir seção Nossa História">
+          <span class="audio-icon">🔊</span> <span class="audio-label">Ouvir</span>
+        </button>
+      </div>
+      <div class="historia-content animate-on-scroll">
+        <div class="historia-text">
+          <p class="historia-para">
+            A <strong>IBMLE</strong> tem suas origens há mais de <strong>30 anos</strong>, quando um grupo de crianças
+            começou a se reunir na casa da irmã <strong>Célia</strong> para louvar e aprender a Palavra de Deus.
+            A partir desse núcleo inicial, a obra foi crescendo e passou a alcançar também os pais dessas crianças.
+          </p>
+          <p class="historia-para">
+            Em <strong>2010</strong>, a igreja já contava com mais de <strong>200 membros</strong> e completava
+            29 anos de existência. Ao longo das décadas, a organização cresceu significativamente, tanto em
+            estrutura física — hoje com dois pavimentos — quanto em programação ministerial.
+          </p>
+          <p class="historia-para">
+            Sob a liderança pastoral do <strong>Pr. Álvaro Donato de Brito</strong>, <strong>Pr. Jonathas Brito</strong>
+            e <strong>Pra. Tânia Brito</strong>, a IBMLE continua firme na missão de alcançar vidas para Cristo
+            em Lagoa Encantada e arredores.
+          </p>
+        </div>
+        <div class="historia-stats">
+          <div class="stat-card animate-on-scroll">
+            <span class="stat-number">+30</span>
+            <span class="stat-label">Anos de história</span>
+          </div>
+          <div class="stat-card animate-on-scroll">
+            <span class="stat-number">+200</span>
+            <span class="stat-label">Membros</span>
+          </div>
+          <div class="stat-card animate-on-scroll">
+            <span class="stat-number">10+</span>
+            <span class="stat-label">Ministérios ativos</span>
+          </div>
+          <div class="stat-card animate-on-scroll">
+            <span class="stat-number">2</span>
+            <span class="stat-label">Pavimentos</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="ministerios" class="section section-alt" aria-labelledby="titulo-ministerios">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-badge">✋ Ministérios</span>
+        <h2 id="titulo-ministerios" class="section-title">Nossos <span class="gold">Ministérios</span></h2>
+        <button class="btn-audio" id="audio-ministerios" aria-label="Ouvir seção Ministérios">
+          <span class="audio-icon">🔊</span> <span class="audio-label">Ouvir</span>
+        </button>
+      </div>
+      <div class="ministerios-grid">
+
+        <article class="ministerio-card animate-on-scroll" aria-label="Ministério de Louvor">
+          <div class="card-icon">🎵</div>
+          <h3 class="card-title">Ministério de Louvor</h3>
+          <p class="card-subtitle">Só Pra Te Adorar</p>
+          <p class="card-leaders">Pr. Jonathas · Willams · Rosa</p>
+          <a href="#louvor" class="card-badge" style="text-decoration: none; cursor: pointer; display: inline-block;">🎼
+            Ver Escala & LouveApp</a>
+        </article>
+
+        <article class="ministerio-card animate-on-scroll" aria-label="Grupo Clamor do Silêncio">
+          <div class="card-icon">🤟</div>
+          <h3 class="card-title">Clamor do Silêncio</h3>
+          <p class="card-subtitle">Ministério de Moraes</p>
+          <p class="card-leaders">Alexssandra</p>
+          <span class="card-badge">Ministério de Libras</span>
+        </article>
+
+        <article class="ministerio-card animate-on-scroll" aria-label="Grupo de Varões">
+          <div class="card-icon">👨‍👨‍👦</div>
+          <h3 class="card-title">Grupo de Varões</h3>
+          <p class="card-subtitle">Homens dedicados à obra</p>
+          <p class="card-leaders">Leonardo · Irmão Josias</p>
+          <span class="card-badge">Masculino</span>
+        </article>
+
+        <article class="ministerio-card animate-on-scroll" aria-label="Grupo de Senhoras">
+          <div class="card-icon">👩‍👩‍👧</div>
+          <h3 class="card-title">Grupo de Senhoras</h3>
+          <p class="card-subtitle">Ministério das Mulheres</p>
+          <p class="card-leaders">Pra. Tânia · Jaciana Passavanti</p>
+          <span class="card-badge">Feminino</span>
+        </article>
+
+        <article class="ministerio-card animate-on-scroll" aria-label="Ministério Jovens Conexão">
+          <div class="card-icon">⚡</div>
+          <h3 class="card-title">Jovens Conexão</h3>
+          <p class="card-subtitle">Jovens e adolescentes</p>
+          <p class="card-leaders">Mikaela · Josias</p>
+          <span class="card-badge">Juventude</span>
+        </article>
+
+        <article class="ministerio-card animate-on-scroll" aria-label="Ministério de Dança Renascer">
+          <div class="card-icon">💃</div>
+          <h3 class="card-title">Dança Renascer</h3>
+          <p class="card-subtitle">Expressão artística da fé</p>
+          <p class="card-leaders">Sther · Andressa</p>
+          <span class="card-badge">Arte Sacra</span>
+        </article>
+
+        <article class="ministerio-card animate-on-scroll" aria-label="Departamento Infantil">
+          <div class="card-icon">🧒</div>
+          <h3 class="card-title">Departamento Infantil</h3>
+          <p class="card-subtitle">Crianças</p>
+          <p class="card-leaders">Suellen Raffaella · Daniela Guerra</p>
+          <span class="card-badge">Crianças</span>
+        </article>
+
+        <article class="ministerio-card animate-on-scroll" aria-label="Ministério de Missões">
+          <div class="card-icon">🌍</div>
+          <h3 class="card-title">Missões</h3>
+          <p class="card-subtitle">Envio e apoio missionário</p>
+          <p class="card-leaders">Sther · Andressa</p>
+          <span class="card-badge">Missional</span>
+        </article>
+
+        <article class="ministerio-card animate-on-scroll" aria-label="Ministério da Família">
+          <div class="card-icon">❤️</div>
+          <h3 class="card-title">Ministério da Família</h3>
+          <p class="card-subtitle">Famílias da congregação</p>
+          <p class="card-leaders">Diác. Júnior Passavante · Ana Cristina</p>
+          <span class="card-badge">Família</span>
+        </article>
+
+        <article class="ministerio-card animate-on-scroll" aria-label="Ministério de Teatro">
+          <div class="card-icon">🎭</div>
+          <h3 class="card-title">Teatro</h3>
+          <p class="card-subtitle">Expressão artística</p>
+          <p class="card-leaders">Peterson Nelson</p>
+          <span class="card-badge">Arte Sacra</span>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  <section id="programacao" class="section" aria-labelledby="titulo-programacao">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-badge">🗓 Programação</span>
+        <h2 id="titulo-programacao" class="section-title">Horários de <span class="gold">Culto</span></h2>
+        <button class="btn-audio" id="audio-programacao" aria-label="Ouvir programação de cultos">
+          <span class="audio-icon">🔊</span> <span class="audio-label">Ouvir</span>
+        </button>
+      </div>
+      <div class="programacao-wrapper animate-on-scroll">
+        <div class="culto-day">
+          <div class="day-label">Terça-feira</div>
+          <div class="culto-item">
+            <span class="culto-hora">09:00h</span>
+            <span class="culto-nome">Culto de Jejum e Oração</span>
+          </div>
+          <div class="culto-item">
+            <span class="culto-hora">14:00h</span>
+            <span class="culto-nome">Culto Tarde da Vitória</span>
+          </div>
+        </div>
+        <div class="culto-day">
+          <div class="day-label">Quarta-feira</div>
+          <div class="culto-item">
+            <span class="culto-hora">19:00h</span>
+            <span class="culto-nome">Culto de Oração</span>
+          </div>
+        </div>
+        <div class="culto-day">
+          <div class="day-label">Quinta-feira</div>
+          <div class="culto-item">
+            <span class="culto-hora">19:00h – 20:00h</span>
+            <span class="culto-nome">Culto de Doutrina</span>
+          </div>
+          <div class="culto-item">
+            <span class="culto-hora">20:00h – 21:00h</span>
+            <span class="culto-nome">Reunião dos Departamentos</span>
+          </div>
+        </div>
+        <div class="culto-day destaque">
+          <div class="day-label">Domingo</div>
+          <div class="culto-item">
+            <span class="culto-hora">17:00h</span>
+            <span class="culto-nome">Escola Bíblica Dominical (EBD)</span>
+          </div>
+          <div class="culto-item">
+            <span class="culto-hora">19:00h</span>
+            <span class="culto-nome">Culto da Família</span>
+          </div>
+        </div>
+        <div class="culto-day especial">
+          <div class="day-label">1º Domingo do mês</div>
+          <div class="culto-item">
+            <span class="culto-hora">07:00h</span>
+            <span class="culto-nome">✨ Culto de Consagração</span>
+          </div>
+          <div class="culto-item">
+            <span class="culto-hora">Manhã</span>
+            <span class="culto-nome">☕ Café da Comunhão</span>
+          </div>
+          <div class="culto-item">
+            <span class="culto-hora">Noite</span>
+            <span class="culto-nome">🍷 Santa Ceia</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="louvor" class="section section-alt" aria-labelledby="titulo-louvor">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-badge">🎵 Ministério de Louvor</span>
+        <h2 id="titulo-louvor" class="section-title">Escala do <span class="gold">Louvor</span></h2>
+        <p class="section-desc">Escala do Ministério <em>Só Pra Te Adorar</em></p>
+
+      </div>
+      <div class="louvor-info animate-on-scroll">
+        <div class="louvor-qr glass-card">
+
+          <div class="qr-placeholder" id="qrCodeArea">
+            <div class="qr-icon">📱</div>
+            <p>Ou escaneie o QR Code abaixo<br>para acessar pelo celular:</p>
+            <div class="qr-box" id="qrBox" aria-label="QR Code de acesso à escala no LouveApp">
+              <a href="https://louveapp.com/home#inicio" target="_blank" rel="noopener noreferrer"
+                style="display: flex; width: 100%; height: 100%; align-items: center; justify-content: center; background: #ffffff;">
+                <img src="assets/img/qr-louveapp.png" alt="QR Code para acessar a escala de louvor no LouveApp"
+                  width="180" height="180" loading="eager" style="object-fit: contain; background: #ffffff;">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="louvor-escala glass-card">
+          <h3 class="escala-titulo">📋 Próximas Escalas da Igreja</h3>
+          <div id="escalaContainer" class="escala-loading" aria-live="polite">
+            <div class="loader"></div>
+            <p>Carregando escala...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+      </div>
+    </div>
+    </div>
+  </section>
+
+
+  <section id="ebd" class="section section-alt" aria-labelledby="titulo-ebd">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-badge">📚 EBD</span>
+        <h2 id="titulo-ebd" class="section-title">Escola Bíblica <span class="gold">Dominical</span></h2>
+
+      </div>
+      <button class="btn-audio" id="audio-ebd" aria-label="Ouvir sobre a EBD">
+        <span class="audio-icon">🔊</span> <span class="audio-label">Ouvir</span>
+      </button>
+      <div class="ebd-content animate-on-scroll">
+        <div class="ebd-card glass-card">
+          <div class="ebd-icon">📖</div>
+          <h3>Formação Bíblica para Todos</h3>
+          <p>A Escola Bíblica Dominical acontece todos os domingos às <strong>17:00h</strong>,
+            antes do Culto da Família. É um espaço de estudo, formação e comunhão para todas as idades.</p>
+          <ul class="ebd-list">
+            <li>📅 Todo domingo às 17:00h</li>
+            <li>👨‍👩‍👧‍👦 Para todas as idades</li>
+            <li>📚 Estudo sistemático da Bíblia</li>
+            <li>🤝 Comunhão entre os membros</li>
+          </ul>
+        </div>
+        <div class="ebd-card glass-card">
+          <div class="ebd-icon">📜</div>
+          <h3>Versículo da EBD</h3>
+          <blockquote class="ebd-verse">
+            <p>"Procura apresentar-te a Deus aprovado, como obreiro que não tem de que se envergonhar, que maneja bem a
+              palavra da verdade."</p>
+            <cite>— 2 Timóteo 2:15</cite>
+          </blockquote>
+          <p>A EBD é o alicerce da formação cristã, preparando cada membro para viver e compartilhar a fé com segurança
+            e conhecimento bíblico.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="oracao" class="section section-alt" aria-labelledby="titulo-oracao">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-badge">🙏 Oração</span>
+        <h2 id="titulo-oracao" class="section-title">Pedido de <span class="gold">Oração</span></h2>
+        <button class="btn-audio" id="audio-oracao" aria-label="Ouvir seção de pedido de oração">
+          <span class="audio-icon">🔊</span> <span class="audio-label">Ouvir</span>
+        </button>
+      </div>
+      <div class="oracao-wrapper animate-on-scroll">
+        <div class="oracao-info glass-card">
+          <p class="oracao-verse">"A oração eficaz do justo pode muito em seus efeitos."<br><strong>— Tiago
+              5:16</strong></p>
+          <p>Compartilhe seu pedido de oração conosco. Nossa equipe pastoral orará por você.</p>
+        </div>
+        <form class="oracao-form glass-card" id="formOracao" novalidate aria-label="Formulário de pedido de oração">
+          <div class="form-group">
+            <label for="nome" class="form-label">Seu nome</label>
+            <input type="text" id="nome" name="nome" class="form-input" placeholder="Como devemos te chamar?" required
+              maxlength="100">
+            <span class="form-error" id="erro-nome" role="alert"></span>
+          </div>
+          <div class="form-group">
+            <label for="contato" class="form-label">WhatsApp / Telefone <span class="optional">(opcional)</span></label>
+            <input type="tel" id="contato" name="contato" class="form-input" placeholder="(81) 90000-0000"
+              maxlength="20">
+          </div>
+          <div class="form-group">
+            <label for="pedido" class="form-label">Seu pedido de oração</label>
+            <textarea id="pedido" name="pedido" class="form-textarea" rows="4" placeholder="Compartilhe seu pedido..."
+              required maxlength="1000"></textarea>
+            <span class="form-error" id="erro-pedido" role="alert"></span>
+            <span class="char-count" id="charCount">0/1000</span>
+          </div>
+          <div class="form-group form-check">
+            <input type="checkbox" id="anonimo" name="anonimo" class="form-checkbox">
+            <label for="anonimo" class="form-check-label">Manter pedido anônimo</label>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full" id="btnEnviarOracao">
+            <span class="btn-text">🙏 Enviar Pedido de Oração</span>
+            <span class="btn-loading hidden">Enviando...</span>
+          </button>
+          <div id="oracaoMsg" class="form-msg hidden" role="alert" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="contato" class="section" aria-labelledby="titulo-contato">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-badge">📍 Contato</span>
+        <h2 id="titulo-contato" class="section-title">Como nos <span class="gold">Encontrar</span></h2>
+      </div>
+      <div class="contato-grid animate-on-scroll">
+        <div class="contato-info glass-card">
+          <h3 class="contato-titulo">📌 Localização</h3>
+          <address class="contato-address">
+            <p>Lagoa Encantada — Ibura<br>Recife — PE, Brasil</p>
+          </address>
+          <div class="contato-redes">
+            <h4>Redes Sociais & Acervo</h4>
+            <a href="https://facebook.com/igrejabatistamissionariale" class="social-link" id="link-facebook"
+              target="_blank" rel="noopener noreferrer" aria-label="Facebook da IBMLE">
+              <span class="social-icon">📘</span> Facebook
+            </a>
+            <a href="https://instagram.com/_igrejabatistamissionaria" class="social-link" id="link-instagram"
+              target="_blank" rel="noopener noreferrer" aria-label="Instagram da IBMLE">
+              <span class="social-icon">📸</span> @_igrejabatistamissionaria
+            </a>
+            <a href="https://ibmle.blogspot.com" class="social-link" id="link-blog" target="_blank"
+              rel="noopener noreferrer" aria-label="Blog Histórico IBMLE (2010-2013)">
+              <span class="social-icon">📰</span> Blog Histórico (2010–2013)
+            </a>
+          </div>
+          <div class="contato-lideranca">
+            <h4>Liderança Pastoral</h4>
+            <ul>
+              <li>Pr. Álvaro Donato de Brito</li>
+              <li>Pr. Jonathas Brito</li>
+              <li>Pra. Tânia Brito</li>
+            </ul>
+          </div>
+        </div>
+        <div class="mapa-wrapper glass-card">
+          <div class="mapa-placeholder" id="mapaArea">
+            <iframe title="Localização da IBMLE no mapa"
+              src="https://maps.google.com/maps?q=-8.1327,-34.9472&t=&z=16&ie=UTF8&iwloc=&output=embed" width="100%"
+              height="300" style="border:0;" allowfullscreen="" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <footer class="footer" role="contentinfo">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <img src="assets/img/logo-imble.jpeg" alt="Logo IBMLE" class="footer-logo" loading="lazy">
+        <div>
+          <p class="footer-title">IBMLE</p>
+          <p class="footer-sub">Igreja Batista Missionária em Lagoa Encantada</p>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="#inicio">Início</a>
+        <a href="#historia">História</a>
+        <a href="#ministerios">Ministérios</a>
+        <a href="#programacao">Cultos</a>
+        <a href="#oracao">Oração</a>
+        <a href="#contato">Contato</a>
+      </div>
+      <p class="footer-copy">
+        CNPJ: 01.684.598/0001-48 · Lagoa Encantada, Ibura — Recife, PE<br>
+        Desenvolvido por <strong>PHP Dev</strong> · © 2026 — Todos os direitos reservados
+      </p>
+    </div>
+  </footer>
+
+
+  <button id="btnToTop" class="btn-totop" aria-label="Voltar ao topo" title="Voltar ao topo">↑</button>
+
+
+  <div id="toast" class="toast" role="alert" aria-live="assertive"></div>
+
+  <script src="js/app.js"></script>
+</body>
+
+</html>

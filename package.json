@@ -1,0 +1,21 @@
+{
+  "name": "site-imble",
+  "version": "1.0.0",
+  "description": "Site PWA da Igreja Batista Missionária em Lagoa Encantada (IBMLE)",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "test": "echo \"Nenhum teste configurado\" && exit 0"
+  },
+  "keywords": ["igreja", "ibmle", "pwa", "batista"],
+  "author": "PHP Dev",
+  "license": "UNLICENSED",
+  "private": true,
+  "type": "commonjs",
+  "dependencies": {
+    "better-sqlite3": "^11.10.0",
+    "express": "^5.2.1",
+    "nodemon": "^3.1.10"
+  }
+}
