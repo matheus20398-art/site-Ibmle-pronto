@@ -54,8 +54,12 @@ document.addEventListener('DOMContentLoaded', () => {
   initToTop();
   initEscala();
   initQRCode();
+  initAuthUI();
+  initMembrosUI();
   registerServiceWorker();
+
 });
+
 
 /* =========================================================
    4. TEMA (DARK / LIGHT)
@@ -487,3 +491,250 @@ function registerServiceWorker() {
     });
   }
 }
+
+/* =========================================================
+   15. AUTENTICAÇÃO & MODAL (LOGIN / CADASTRO)
+   ========================================================= */
+function initAuthUI() {
+  const btnOpenAuth = document.getElementById('btnOpenAuth');
+  const btnCloseAuth = document.getElementById('btnCloseAuth');
+  const authModal = document.getElementById('authModal');
+  const tabLogin = document.getElementById('tabLogin');
+  const tabCadastro = document.getElementById('tabCadastro');
+  const formLogin = document.getElementById('formLogin');
+  const formCadastro = document.getElementById('formCadastro');
+  const userBadge = document.getElementById('userBadge');
+  const btnLogout = document.getElementById('btnLogout');
+
+  // Checa se usuário já está logado
+  checkUserSession();
+
+  // Abrir / Fechar Modal
+  btnOpenAuth?.addEventListener('click', () => {
+    authModal.style.display = 'flex';
+  });
+
+  btnCloseAuth?.addEventListener('click', () => {
+    authModal.style.display = 'none';
+  });
+
+  // Alternar Abas (Login / Cadastro)
+  tabLogin?.addEventListener('click', () => {
+    tabLogin.classList.add('active');
+    tabCadastro.classList.remove('active');
+    formLogin.style.display = 'block';
+    formCadastro.style.display = 'none';
+  });
+
+  tabCadastro?.addEventListener('click', () => {
+    tabCadastro.classList.add('active');
+    tabLogin.classList.remove('active');
+    formCadastro.style.display = 'block';
+    formLogin.style.display = 'none';
+  });
+
+  // Form de Login
+  formLogin?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('loginEmail').value;
+    const senha = document.getElementById('loginSenha').value;
+
+    try {
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, senha }),
+      });
+      const data = await res.json();
+
+      if (res.ok) {
+        showToast(`Bem-vindo(a), ${data.usuario.nome}!`);
+        authModal.style.display = 'none';
+        updateUserUI(data.usuario);
+      } else {
+        showToast(`⚠️ ${data.error}`);
+      }
+    } catch (err) {
+      showToast('⚠️ Erro ao tentar realizar login.');
+    }
+  });
+
+  // Form de Cadastro
+  formCadastro?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const nome = document.getElementById('cadNome').value;
+    const email = document.getElementById('cadEmail').value;
+    const senha = document.getElementById('cadSenha').value;
+
+    try {
+      const res = await fetch('/api/auth/cadastro', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nome, email, senha }),
+      });
+      const data = await res.json();
+
+      if (res.ok) {
+        showToast('✅ Conta criada com sucesso! Faça login.');
+        tabLogin.click();
+      } else {
+        showToast(`⚠️ ${data.error}`);
+      }
+    } catch (err) {
+      showToast('⚠️ Erro ao criar conta.');
+    }
+  });
+
+  // Logout
+  btnLogout?.addEventListener('click', async () => {
+    await fetch('/api/auth/logout', { method: 'POST' });
+    updateUserUI(null);
+    showToast('Sessão encerrada.');
+  });
+}
+
+async function checkUserSession() {
+  try {
+    const res = await fetch('/api/auth/me');
+    const data = await res.json();
+    if (data.logado) {
+      updateUserUI(data.usuario);
+    } else {
+      updateUserUI(null);
+    }
+  } catch {
+    updateUserUI(null);
+  }
+}
+
+function updateUserUI(usuario) {
+  const btnOpenAuth = document.getElementById('btnOpenAuth');
+  const userBadge = document.getElementById('userBadge');
+  const btnLogout = document.getElementById('btnLogout');
+
+  if (usuario) {
+    if (btnOpenAuth) btnOpenAuth.style.display = 'none';
+    if (userBadge) {
+      userBadge.textContent = `👤 ${usuario.nome}`;
+      userBadge.style.display = 'inline-block';
+    }
+    if (btnLogout) btnLogout.style.display = 'inline-block';
+  } else {
+    if (btnOpenAuth) btnOpenAuth.style.display = 'inline-block';
+    if (userBadge) userBadge.style.display = 'none';
+    if (btnLogout) btnLogout.style.display = 'none';
+  }
+}
+
+
+/* =========================================================
+   16. GESTÃO DE MEMBROS (CRUD)
+   ========================================================= */
+function initMembrosUI() {
+  const btnNovoMembro = document.getElementById('btnNovoMembro');
+  const btnCloseMembro = document.getElementById('btnCloseMembro');
+  const membroModal = document.getElementById('membroModal');
+  const formMembro = document.getElementById('formMembro');
+  const membroBusca = document.getElementById('membroBusca');
+
+  carregarMembros();
+
+
+  btnNovoMembro?.addEventListener('click', () => {
+    document.getElementById('membroModalTitle').textContent = 'Cadastrar Membro';
+    formMembro.reset();
+    document.getElementById('membroId').value = '';
+    membroModal.style.display = 'flex';
+  });
+
+  btnCloseMembro?.addEventListener('click', () => {
+    membroModal.style.display = 'none';
+  });
+
+  membroBusca?.addEventListener('input', (e) => {
+    carregarMembros(e.target.value.trim());
+  });
+
+  formMembro?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const id = document.getElementById('membroId').value;
+    const body = {
+      nome: document.getElementById('membroNome').value,
+      telefone: document.getElementById('membroTelefone').value,
+      email: document.getElementById('membroEmail').value,
+      data_nascimento: document.getElementById('membroNascimento').value,
+      endereco: document.getElementById('membroEndereco').value,
+      ministerio: document.getElementById('membroMinisterio').value,
+      data_batismo: document.getElementById('membroBatismo').value,
+    };
+
+    const method = id ? 'PUT' : 'POST';
+    const url = id ? `/api/membros/${id}` : '/api/membros';
+
+    try {
+      const res = await fetch(url, {
+        method,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      });
+      const data = await res.json();
+
+      if (res.ok) {
+        showToast(id ? 'Membro atualizado!' : 'Membro cadastrado com sucesso!');
+        membroModal.style.display = 'none';
+        carregarMembros();
+      } else {
+        showToast(`⚠️ ${data.error}`);
+      }
+    } catch {
+      showToast('⚠️ Erro ao salvar membro.');
+    }
+  });
+}
+
+async function carregarMembros(busca = '') {
+  const tbody = document.getElementById('membrosTbody');
+  if (!tbody) return;
+
+  try {
+    const url = busca ? `/api/membros?busca=${encodeURIComponent(busca)}` : '/api/membros';
+    const res = await fetch(url);
+    if (!res.ok) throw new Error('Não autorizado');
+    
+    const membros = await res.json();
+
+    if (!membros || membros.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="5" style="padding: 1.5rem; text-align: center; color: var(--text-muted);">Nenhum membro encontrado.</td></tr>`;
+      return;
+    }
+
+    tbody.innerHTML = membros.map(m => `
+      <tr style="border-bottom: 1px solid var(--border-color);">
+        <td style="padding: 0.8rem 1rem; font-weight: 600;">${m.nome}</td>
+        <td style="padding: 0.8rem 1rem;">${m.telefone || '-'}</td>
+        <td style="padding: 0.8rem 1rem;">${m.ministerio || '-'}</td>
+        <td style="padding: 0.8rem 1rem;">${m.email || '-'}</td>
+        <td style="padding: 0.8rem 1rem; text-align: right;">
+          <button onclick="deletarMembro(${m.id})" class="btn btn-outline btn-sm" style="color: var(--color-error); border-color: var(--color-error);">Excluir</button>
+        </td>
+      </tr>
+    `).join('');
+  } catch (err) {
+    tbody.innerHTML = `<tr><td colspan="5" style="padding: 1.5rem; text-align: center; color: var(--color-error);">Erro ao carregar lista de membros.</td></tr>`;
+  }
+}
+
+async function deletarMembro(id) {
+  if (!confirm('Deseja realmente excluir este membro?')) return;
+  try {
+    const res = await fetch(`/api/membros/${id}`, { method: 'DELETE' });
+    if (res.ok) {
+      showToast('Membro removido.');
+      carregarMembros();
+    }
+  } catch {
+    showToast('Erro ao remover membro.');
+  }
+}
+
+

@@ -59,8 +59,10 @@
       <li><a href="#adoracao" class="nav-link" id="link-adoracao">Adoração</a></li>
       <li><a href="#ebd" class="nav-link" id="link-ebd">EBD</a></li>
       <li><a href="#oracao" class="nav-link" id="link-oracao">Oração</a></li>
+      <li><a href="#membros" class="nav-link" id="link-membros">Membros</a></li>
       <li><a href="#contato" class="nav-link" id="link-contato">Contato</a></li>
     </ul>
+
 
 
     <div class="nav-actions">
@@ -69,8 +71,56 @@
       </button>
       <button id="btnFontMinus" class="btn-icon" aria-label="Diminuir fonte" title="Diminuir fonte">A-</button>
       <button id="btnFontPlus" class="btn-icon" aria-label="Aumentar fonte" title="Aumentar fonte">A+</button>
+      <button id="btnOpenAuth" class="btn btn-primary btn-sm" style="margin-left: 8px;">🔑 Entrar</button>
+      <span id="userBadge" class="user-badge" style="display: none; margin-left: 8px;"></span>
+      <button id="btnLogout" class="btn btn-outline btn-sm" style="display: none; margin-left: 4px;">Sair</button>
     </div>
   </nav>
+
+  <!-- Modal de Autenticação (Login / Cadastro) -->
+  <div id="authModal" class="modal-overlay" style="display: none;">
+    <div class="modal-card glass-card">
+      <button id="btnCloseAuth" class="modal-close">&times;</button>
+      
+      <div class="auth-tabs">
+        <button id="tabLogin" class="auth-tab active">Entrar</button>
+        <button id="tabCadastro" class="auth-tab">Criar Conta</button>
+      </div>
+
+      <!-- Formulário de Login -->
+      <form id="formLogin" class="auth-form">
+        <h3 class="auth-title">Acessar Conta</h3>
+        <div class="form-group">
+          <label for="loginEmail">E-mail</label>
+          <input type="email" id="loginEmail" class="form-input" required placeholder="seu@email.com">
+        </div>
+        <div class="form-group">
+          <label for="loginSenha">Senha</label>
+          <input type="password" id="loginSenha" class="form-input" required placeholder="••••••••">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+      </form>
+
+      <!-- Formulário de Cadastro -->
+      <form id="formCadastro" class="auth-form" style="display: none;">
+        <h3 class="auth-title">Nova Conta</h3>
+        <div class="form-group">
+          <label for="cadNome">Nome Completo</label>
+          <input type="text" id="cadNome" class="form-input" required placeholder="Seu nome">
+        </div>
+        <div class="form-group">
+          <label for="cadEmail">E-mail</label>
+          <input type="email" id="cadEmail" class="form-input" required placeholder="seu@email.com">
+        </div>
+        <div class="form-group">
+          <label for="cadSenha">Senha</label>
+          <input type="password" id="cadSenha" class="form-input" required placeholder="Mínimo 6 caracteres">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
+      </form>
+    </div>
+  </div>
+
 
 
   <section id="inicio" class="hero" aria-label="Bem-vindo à IBMLE">
@@ -444,6 +494,91 @@
       </div>
     </div>
   </section>
+
+  <!-- SEÇÃO DE MEMBROS (CADASTRO E LISTAGEM) -->
+  <section id="membros" class="section" aria-labelledby="titulo-membros">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-badge">👥 Gestão</span>
+        <h2 id="titulo-membros" class="section-title">Cadastro de <span class="gold">Membros</span></h2>
+      </div>
+
+      <!-- Área de Membros -->
+      <div id="membrosContent" class="animate-on-scroll">
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+          <input type="text" id="membroBusca" class="form-input" placeholder="🔍 Buscar membro por nome ou telefone..." style="max-width: 380px;">
+          <button id="btnNovoMembro" class="btn btn-primary">+ Novo Membro</button>
+        </div>
+
+        <!-- Tabela de Membros -->
+        <div class="glass-card" style="overflow-x: auto;">
+          <table class="membros-table" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead>
+              <tr style="border-bottom: 1px solid var(--border-color); color: var(--text-muted);">
+                <th style="padding: 1rem;">Nome</th>
+                <th style="padding: 1rem;">Telefone</th>
+                <th style="padding: 1rem;">Ministério</th>
+                <th style="padding: 1rem;">E-mail</th>
+                <th style="padding: 1rem; text-align: right;">Ações</th>
+              </tr>
+            </thead>
+            <tbody id="membrosTbody">
+              <tr>
+                <td colspan="5" style="padding: 2rem; text-align: center; color: var(--text-muted);">Carregando membros...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal Cadastrar / Editar Membro -->
+  <div id="membroModal" class="modal-overlay" style="display: none;">
+    <div class="modal-card glass-card" style="max-width: 500px;">
+      <button id="btnCloseMembro" class="modal-close">&times;</button>
+      <h3 id="membroModalTitle" class="auth-title">Cadastrar Membro</h3>
+      <form id="formMembro" class="auth-form">
+        <input type="hidden" id="membroId">
+        <div class="form-group">
+          <label for="membroNome">Nome Completo *</label>
+          <input type="text" id="membroNome" class="form-input" required placeholder="Nome do membro">
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label for="membroTelefone">Telefone / WhatsApp</label>
+            <input type="tel" id="membroTelefone" class="form-input" placeholder="(81) 90000-0000">
+          </div>
+          <div class="form-group">
+            <label for="membroNascimento">Data de Nasc.</label>
+            <input type="date" id="membroNascimento" class="form-input">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="membroEmail">E-mail</label>
+          <input type="email" id="membroEmail" class="form-input" placeholder="email@exemplo.com">
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label for="membroMinisterio">Ministério</label>
+            <input type="text" id="membroMinisterio" class="form-input" placeholder="Ex: Louvor, Varões">
+          </div>
+          <div class="form-group">
+            <label for="membroBatismo">Data Batismo</label>
+            <input type="date" id="membroBatismo" class="form-input">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="membroEndereco">Endereço</label>
+          <input type="text" id="membroEndereco" class="form-input" placeholder="Rua, número, bairro">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Salvar Membro</button>
+      </form>
+    </div>
+  </div>
+
+
 
 
   <section id="contato" class="section" aria-labelledby="titulo-contato">
