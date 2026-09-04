@@ -16,10 +16,11 @@ async function conectar() {
   dbPromise = (async () => {
     console.log('[DB] Inicializando SQLite em memória...');
 
+    const fs = require('fs');
     const wasmPath = require.resolve('sql.js/dist/sql-wasm.wasm');
-    const SQL = await initSqlJs({
-      locateFile: () => wasmPath,
-    });
+    const wasmBinary = fs.readFileSync(wasmPath);
+
+    const SQL = await initSqlJs({ wasmBinary });
     db = new SQL.Database();
 
     // ── Tabela de ministérios ──────────────────────────────────────────

@@ -24,14 +24,14 @@ app.use((req, res, next) => {
   next();
 });
 
+// Suporta tanto /api/... quanto /... na Vercel
 app.use('/api', apiRoutes);
+app.use('/', apiRoutes);
 
 app.use((err, req, res, next) => {
-  console.error('[ERRO VERCEL]', err.message);
+  console.error('[ERRO VERCEL SERVERLESS]', err);
   res.status(err.status || 500).json({
-    error: process.env.NODE_ENV === 'production'
-      ? 'Erro interno do servidor.'
-      : err.message,
+    error: err.message || 'Erro interno no servidor Vercel.',
   });
 });
 
