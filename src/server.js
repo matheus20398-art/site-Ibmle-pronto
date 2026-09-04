@@ -55,7 +55,7 @@ app.use(express.static(PUBLIC_DIR, {
 
 app.use('/api', api);
 
-app.get('*', (req, res) => {
+app.use((req, res) => {
   if (req.path.startsWith('/api')) {
     return res.status(404).json({ error: 'Rota não encontrada.' });
   }
