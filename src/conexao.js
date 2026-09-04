@@ -16,11 +16,17 @@ async function conectar() {
   dbPromise = (async () => {
     console.log('[DB] Inicializando SQLite em memória...');
 
-    const fs = require('fs');
-    const wasmPath = require.resolve('sql.js/dist/sql-wasm.wasm');
-    const wasmBinary = fs.readFileSync(wasmPath);
+    let SQL;
+    try {
+      const fs = require('fs');
+      const wasmPath = require.resolve('sql.js/dist/sql-wasm.wasm');
+      const wasmBinary = fs.readFileSync(wasmPath);
+      SQL = await initSqlJs({ wasmBinary });
+    } catch (err) {
+      console.warn('[DB] Fallback para inicialização padrão do sql.js:', err.message);
+      SQL = await initSqlJs();
+    }
 
-    const SQL = await initSqlJs({ wasmBinary });
     db = new SQL.Database();
 
     // ── Tabela de ministérios ──────────────────────────────────────────
